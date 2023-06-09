@@ -1,0 +1,101 @@
+# coding: utf-8
+from flask_sqlalchemy import SQLAlchemy
+
+
+
+
+class DiagDoc(db.Model):
+    __tablename__ = 'diag_doc'
+    __table_args__ = (
+        db.ForeignKeyConstraint(['diag_id', 'pat_id'], ['diagnosis.diag_id', 'diagnosis.pat_id']),
+        db.Index('fk_diag_doc_diagnosis1_idx', 'diag_id', 'pat_id')
+    )
+
+    pat_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    diag_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    doc_id = db.Column(db.ForeignKey('doctor.doc_id'), primary_key=True, nullable=False, index=True)
+    diag_date = db.Column(db.Date, nullable=False)
+
+    diag = db.relationship('Diagnosi', primaryjoin='and_(DiagDoc.diag_id == Diagnosi.diag_id, DiagDoc.pat_id == Diagnosi.pat_id)', backref='diag_docs')
+    doc = db.relationship('Doctor', primaryjoin='DiagDoc.doc_id == Doctor.doc_id', backref='diag_docs')
+
+
+class MedicalHistory(DiagDoc):
+    __tablename__ = 'medical_history'
+    __table_args__ = (
+        db.ForeignKeyConstraint(['pat_id', 'diag_id', 'doc_id'], ['diag_doc.pat_id', 'diag_doc.diag_id', 'diag_doc.doc_id']),
+    )
+
+    pat_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    diag_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    doc_id = db.Column(db.String(10), primary_key=True, nullable=False)
+    day = db.Column(db.Date, nullable=False)
+    type = db.Column(db.String(2), nullable=False)
+
+
+class Reservation(DiagDoc):
+    __tablename__ = 'reservation'
+    __table_args__ = (
+        db.ForeignKeyConstraint(['pat_id', 'diag_id', 'doc_id'], ['diag_doc.pat_id', 'diag_doc.diag_id', 'diag_doc.doc_id']),
+        db.Index('fk_reservation_diag_doc1_idx', 'pat_id', 'diag_id', 'doc_id')
+    )
+
+    pat_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    diag_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    doc_id = db.Column(db.String(10), primary_key=True, nullable=False)
+    resv_date = db.Column(db.Date, nullable=False)
+
+
+
+class Diagnosi(db.Model):
+    __tablename__ = 'diagnosis'
+
+    diag_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    pat_id = db.Column(db.ForeignKey('paitent.pat_id'), primary_key=True, nullable=False, index=True)
+    diag_name = db.Column(db.String(6), nullable=False)
+    diag_type = db.Column(db.String(2), nullable=False)
+
+    pat = db.relationship('Paitent', primaryjoin='Diagnosi.pat_id == Paitent.pat_id', backref='diagnosis')
+
+
+class HosEvalu(Diagnosi):
+    __tablename__ = 'hos_evalu'
+
+    pat_id = db.Column(db.ForeignKey('diagnosis.pat_id'), primary_key=True, index=True)
+
+
+
+class DocEvalu(db.Model):
+    __tablename__ = 'doc_evalu'
+    __table_args__ = (
+        db.ForeignKeyConstraint(['pat_id', 'diag_id', 'doc_id'], ['diag_doc.pat_id', 'diag_doc.diag_id', 'diag_doc.doc_id'], ondelete='CASCADE'),
+    )
+
+    pat_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    diag_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    doc_id = db.Column(db.String(10), primary_key=True, nullable=False)
+    doc_evalu_itemname = db.Column(db.Integer, primary_key=True, nullable=False)
+    doc_evalu_text = db.Column(db.String(45))
+    doc_evalu_score = db.Column(db.Integer, nullable=False)
+
+    pat = db.relationship('DiagDoc', primaryjoin='and_(DocEvalu.pat_id == DiagDoc.pat_id, DocEvalu.diag_id == DiagDoc.diag_id, DocEvalu.doc_id == DiagDoc.doc_id)', backref='doc_evalus')
+
+
+
+class Doctor(db.Model):
+    __tablename__ = 'doctor'
+
+    doc_id = db.Column(db.String(10), primary_key=True)
+    doc_name = db.Column(db.String(6), nullable=False)
+    doc_major = db.Column(db.String(8), nullable=False)
+
+
+
+class Paitent(db.Model):
+    __tablename__ = 'paitent'
+
+    pat_RRnum = db.Column(db.String(15), nullable=False)
+    pat_id = db.Column(db.Integer, primary_key=True)
+    pat_name = db.Column(db.String(6), nullable=False)
+    pat_phonum = db.Column(db.String(19), nullable=False)
+    pat_type = db.Column(db.String(2), nullable=False)
