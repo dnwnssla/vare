@@ -15,22 +15,14 @@
     <!-- Your custom styles (optional) -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
+ <!--Main Navigation START-->
+ <header>
+    <!-- Navbar -->
+    {% include "inc/navbars.html" ignore missing %}
+    <!-- Navbar -->
+</header>
 
 <body>
-
-    <!--Main Navigation START-->
-    <header>
-        <!-- Navbar -->
-        {% include "inc/navbars.html" ignore missing %}
-        <!-- Navbar -->
-    </header>
-    <!--Main Navigation END-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <!--Main layout-->
     <main class="pt-1">
         <div class="container">
