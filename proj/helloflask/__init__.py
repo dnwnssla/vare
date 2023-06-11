@@ -12,6 +12,10 @@ app.secret_key = "2345xc12"
 
 @app.route('/')
 def index():    
+    return render_template('login.html',title="login.html")
+
+@app.route('/home')
+def home():    
     return render_template('home.html',title="main")
 
 @app.route('/hospital')

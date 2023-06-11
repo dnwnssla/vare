@@ -1,6 +1,6 @@
 # coding: utf-8
 from helloflask.init_db import Base
-from sqlalchemy import  Column, Integer, String, Date, ForeignKey, Result, ForeignKeyConstraint,Index
+from sqlalchemy import  Column, Integer, String, Date, ForeignKey,ForeignKeyConstraint,Index
 from sqlalchemy.orm import relationship, backref
 
 

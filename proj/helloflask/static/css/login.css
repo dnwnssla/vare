@@ -78,6 +78,8 @@ body{
 .login-button-wrap {
 	padding-top: 13px;
 }
+
+
 .login-button-wrap button{
 	width: 465px;
 	height :48px;
@@ -93,14 +95,67 @@ footer{
    
 	padding-top: 95px;
 	padding-bottom: 15px;
-
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	width:768px;
-
-
-
 }
+
+body {
+
+	font-size: 62.5%;
+  }
+  
+  .container {
+	padding: 2em;
+  }
+  
+  /* GENERAL BUTTON STYLING */
+  button,
+  button::after {
+	-webkit-transition: all 0.3s;
+	  -moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	  transition: all 0.3s;
+  }
+  
+  button {
+	background: none;
+	border: 3px solid #fff;
+	border-radius: 5px;
+	color: #fff;
+	display: block;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 1em auto;
+	
+	position: relative;
+	text-transform: uppercase;
+  }
+  
+  button::before,
+  button::after {
+	background: #fff;
+	content: '';
+	position: absolute;
+	z-index: -1;
+  }
+  
+  button:hover {
+	color: #000000;
+  }
+  
+  /* BUTTON 1 */
+  .btn-1::after {
+	height: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+  }
+  
+  .btn-1:hover:after {
+	height: 100%;
+  }
+  
 
 
