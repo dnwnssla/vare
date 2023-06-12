@@ -1,5 +1,185 @@
 {%extends 'base.html' %}
 {% block main %}
-<h1>{{title}}  </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/hoste.css') }}" rel="stylesheet">
+</head>
+  <!-- Create Form -->
+    <form id="form">    
+        <div class="form-control">
+            <label>
+            1. 의사는 친절하고 자세한 설명을 하였나요?
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed">매우만족</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed">만족</input>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed">보통</input>
+            </label>
+            <label for="recommed-4">
+                <input type="radio"
+                       id="recommed-4"
+                       name="recommed">불만족</input>
+            </label>
+            <label for="recommed-5">
+                <input type="radio"
+                       id="recommed-5"
+                       name="recommed">매우불만족</input>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <label>
+            2. 간호사는 친절하고 자세한 설명을 하였나요?
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed2">매우만족</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed2">만족</input>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed2">보통</input>
+            </label>
+            <label for="recommed-4">
+                <input type="radio"
+                       id="recommed-4"
+                       name="recommed2">불만족</input>
+            </label>
+            <label for="recommed-5">
+                <input type="radio"
+                       id="recommed-5"
+                       name="recommed2">매우불만족</input>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <label for="comment">
+            2-1. 만족하신다면, 만족스러운 사항을 적어주세요.
+            </label>
+ 
+            <!-- multi-line text input control -->
+            <textarea name="comment" id="comment"placeholder="내용을 적어주세요."></textarea>
+        </div>
+
+        <div class="form-control">
+            <label for="comment">
+            2-2. 불만족하신다면, 불만족스러운 사항을 적어주세요.
+            </label>
+ 
+            <!-- multi-line text input control -->
+            <textarea name="comment" id="comment"placeholder="내용을 적어주세요."></textarea>
+        </div>
+
+        <div class="form-control">
+            <label>
+            3. 귀하는 진료 수속절차 및 진료 대기 시간에 대하여 얼마나 만족하십니까?
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed3">매우만족</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed3">만족</input>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed3">보통</input>
+            </label>
+            <label for="recommed-4">
+                <input type="radio"
+                       id="recommed-4"
+                       name="recommed3">불만족</input>
+            </label>
+            <label for="recommed-5">
+                <input type="radio"
+                       id="recommed-5"
+                       name="recommed3">매우불만족</input>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <label>
+            4. 귀하는 진료(치료)및 각종 검사항목에 대한 설명에 얼마나 만족하십니까?
+            </label>
+ 
+            <!-- Input Type Radio Button -->
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed4">수납 및 접수 창구 직원</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed4">담당의사</input>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed4">담당간호사</input>
+            </label>
+            <label for="recommed-4">
+                <input type="radio"
+                       id="recommed-4"
+                       name="recommed4">불만족</input>
+            </label>
+            <label for="recommed-5">
+                <input type="radio"
+                       id="recommed-5"
+                       name="recommed4">매우불만족</input>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <label for="comment">
+            5. 병원이 가장 개선해야 될 사항이 있다면 간단히 답 해주십시오.
+            </label>
+ 
+            <!-- multi-line text input control -->
+            <textarea name="comment" id="comment"placeholder="내용을 적어주세요."></textarea>
+        </div>
+
+
+        <!-- Multi-line Text Input Control -->
+        <button type="submit" value="submit"> > 제출 < </button>
+
+        
+
+        
+    </form>
+
+</html>
 
 {% endblock %}

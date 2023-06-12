@@ -10,9 +10,22 @@ app.debug = True
 app.secret_key = "2345xc12"
 
 
-@app.route('/')
-def index():    
-    return render_template('login.html',title="login.html")
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('login.html')
+
+@app.route('/', methods=['POST'])
+def index():
+    diag_f = request.form.get('diag_id')
+    log = Diagnosi.query.filter(Diagnosi.diag_id==diag_f).first()
+    pait = Paitent.query.filter(Paitent.pat_id == log.pat_id).first()
+    print(log.diag_id + pait.pat_name)
+    if log is not None:
+     session['loginUser'] = { 'userid':log.diag_id, 'name': pait.pat_name }
+    else:
+        flash("잘못된 고유번호 입니다.")
+    return render_template('home.html')
+
 
 @app.route('/home')
 def home():    
