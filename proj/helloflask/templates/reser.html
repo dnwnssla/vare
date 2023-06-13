@@ -1,5 +1,111 @@
 {%extends 'base.html' %}
 {% block main %}
-<h1>{{title}}  </h1> 
+<table border="1" id="sub_list">
+	<tr class="tr">
+		
+		
+		
+		<th>개설학과</th>
+		<th>교강사</th>
+		<th>신청</th>
+		</tr>
+			
+			<tr>
+				<td>2</td>
+				<td>컴퓨터공학과</td>
+				<td>강민</td>
+				<td><input type ="button" value="신청" class="list_btn_3"/></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>컴퓨터공학과</td>
+				<td>남궁 성</td>
+				<td ><input type ="button" value="신청" class="list_btn_4"/></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>컴퓨터공학과</td>
+				<td>서재원</td>
+				<td><input type ="button" value="신청" class="list_btn_5" /></td>
+	
+			
+
+	</table>
+
+<!doctype html>
+<html lang="ko">
+<head>
+<title>main</title>
+<meta charset="euc-kr">
+<style>
+#container {
+	width: 940px;
+	margin: 0px auto;
+	padding: 20px;
+	border: 1px solid #bcbcbc;
+}
+
+#header {
+	padding: 20px;
+	margin-bottom: 5px;
+	width: 900px;
+	height: 10px;
+	border: 1px solid #bcbcbc;
+	float: right;
+	text-align: right;
+}
+
+#headermenu {
+	padding: 20px;
+	margin-bottom: 5px;
+	width: 900px;
+	height: 50px;
+	float: left;
+	border: 1px solid #bcbcbc;
+}
+
+#content {
+	width: 900px;
+	padding: 20px;
+	margin-bottom: 20px;
+	float: right;
+	border: 1px solid #bcbcbc;
+}
+
+#footer {
+	clear: both;
+	padding: 20px;
+	border: 1px solid #bcbcbc;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<!-- header 시작  -->
+		<div id="header">
+			아이디<input type="text" name="id"> 비밀번호<input type="password"
+				name="pwd"> <input type="submit" value="로그인"> <input
+				type="button" value="회원가입" onclick="location.href = '#'">
+		</div>
+		<div id="headermenu">
+			<a href="main.jsp">홈</a> | <a href="#"> 개설강좌 </a>
+		</div>
+
+		<!-- header 끝  -->
+		<!--  content 시작  -->
+		<div id="content">내용 </div>
+		<!--  content 끝  -->
+
+		<!--  footer 시작   -->
+		<div id="footer">
+			<p>footer 부분</p>
+		</div>
+		<!--  footer 끝  -->
+
+	</div>
+
+</body>
+</html>
+
 
 {% endblock %}

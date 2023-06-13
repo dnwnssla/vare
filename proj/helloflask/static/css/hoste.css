@@ -1,25 +1,31 @@
   /* Styling the Body element i.e. Color,
         Font, Alignment */
-        body {
-            font-family: Verdana;
-            text-align: center;
-            
-        }
+       
  
         /* Styling the Form (Color, Padding, Shadow) */
         form {
             background-color: #fff;
             min-height: 1000px;
-            margin: 50px auto;
-            padding: 30px 20px;
+            margin: 40px auto;
+            padding: 10px 20px;
             box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
         }
  
         /* Styling form-control Class */
-        .form-control {
+      .form-control {
             text-align: left;
-            margin-bottom: 200px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+
         }
+
+        .form-controlll {
+            text-align: left;
+            margin-bottom: 5px;
+            margin-top: 20px;
+
+        }
+    
  
         /* Styling form-control Label */
         .form-control label {
@@ -51,7 +57,7 @@
  
         /* Styling Button */
         button {
-            background-color: #05c46b;
+            background-color: #4e3ec4;;
             border: 1px solid #777;
             border-radius: 2px;
             font-family: inherit;
@@ -59,4 +65,12 @@
             display: block;
             width: 100%;
             margin-top: 50px;
+            font-weight: 700;
+        }
+
+        textarea{
+            width: 100%;
+            height: 6.25em;
+            border: none;
+            resize: none;
         }

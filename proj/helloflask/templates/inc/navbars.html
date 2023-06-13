@@ -21,17 +21,22 @@
                     <!--사이드 메뉴 영역-->
                     <div class="sidebar">
                         <a class="closebtn" onclick="closeMenu()">×</a>
+                        {% if session.loginUser %}
+                        <h7>{{session.loginUser.name}}님</h7>
+                        {% endif %}
                         <a href="/hospital">병원설문조사</a>
                         <a href="/doctor">의사설문조사</a>
                         <a href="/reservation">재신신청</a>
                         <a href="/history">진료내역조회</a>
+                        <a href="/logout">로그아웃</a>
+                                                
                     </div>
                     
                     <!--화면영역-->
                     <div id="main">
                         <button class="openbtn" onclick="openMenu()">
                          ☰
-                        </button>  
+                        </button>   
                     </div>
             </ul>
 

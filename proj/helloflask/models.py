@@ -78,7 +78,7 @@ class EvaluteItem(Base):
     evalu_id =  Column( Integer, primary_key=True)
     q_name =  Column( String(100), nullable=False)
     type =  Column( String(5), nullable=False)
-    target =  Column( Integer, nullable=False)
+    target =  Column( String(10), nullable=False)
 
 
 
@@ -105,4 +105,4 @@ class Paitent(Base):
     pat_id =  Column( Integer, primary_key=True)
     pat_name =  Column( String(6), nullable=False)
     pat_phonum =  Column( String(19), nullable=False)
-    pat_type =  Column( String(2), nullable=False)
+
