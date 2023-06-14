@@ -1,7 +1,12 @@
 {% extends 'base.html'%}
 {% block main %}
 <link href="{{ url_for('static', filename='css/hoste.css') }}" rel="stylesheet">
-<form>
+<script>
+    function finish() {    
+    alert("병원에 대한 설문을 완료하셨습니다.");    
+    }    
+ </script>
+<form action = "/hospital" method = "POST">
 
 {% for item in evallist%}
    
@@ -20,6 +25,6 @@
     
 
 {% endfor%}
-<button type="submit" value="submit"> > 제출 < </button>
+<button type="submit" value="submit" onclick = "finish()"> > 제출 < </button>
 </form>
 {% endblock %}
