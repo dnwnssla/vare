@@ -14,7 +14,7 @@ class DiagDoc(Base):
     pat_id =  Column( Integer, primary_key=True, nullable=False)
     diag_id =  Column( Integer, primary_key=True, nullable=False)
     doc_id =  Column( ForeignKey('doctor.doc_id'), primary_key=True, nullable=False, index=True)
-    diag_date =  Column( Date, nullable=False)
+    
 
     diag =  relationship('Diagnosi', primaryjoin='and_(DiagDoc.diag_id == Diagnosi.diag_id, DiagDoc.pat_id == Diagnosi.pat_id)', backref='diag_docs')
     doc =  relationship('Doctor', primaryjoin='DiagDoc.doc_id == Doctor.doc_id', backref='diag_docs')

@@ -5,8 +5,7 @@
         /* Styling the Form (Color, Padding, Shadow) */
         form {
             background-color: #fff;
-            min-height: 1000px;
-            margin: 70px auto;
+            margin: 40px auto;
             padding: 10px 20px;
             box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
         }
@@ -56,6 +55,7 @@
         }
  
         /* Styling Button */
+
         textarea{
             width: 100%;
             height: 6.25em;

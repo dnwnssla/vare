@@ -4,17 +4,14 @@
     function finish() {    
     alert("진료의사에 대한 설문을 완료하셨습니다.");
     }
-    
-    var a =document.getElementById("list")
-    var b = a.options[a.selectedIndex].id
 </script>
     
-<link href="{{ url_for('static', filename='css/hoste.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/doce.css') }}" rel="stylesheet">
 <form action = "/doctor" method = "POST">
-    <select name="list" id = "list" onchange="changeFn()">
+    <select name="doc_list" id = "list">
      <option value="none">==== 선택 ====</option>
      {% for doc in doclist %}    
-         <option name = "{{doc.doc_id}}" id = "{{doc.doc_id}}"  >{{doc.doc_major}}: <{{doc.doc_name}}></option>
+         <option  value = "{{doc.doc_id}}"  >{{doc.doc_major}}: <{{doc.doc_name}}></option>
      {%endfor%}
     </select>
     
@@ -31,7 +28,7 @@
             
         {%endif%}
  {% endfor%}
-<button type="submit" value="submit" onclick = "finish()"> > 제출 < </button>
+ <button type="submit" value="submit" onclick = "finish()" class = "myButton"> > 제출 < </button>
 </form>
 
 {% endblock %}

@@ -21,7 +21,7 @@ def login_post():
     log = Diagnosi.query.filter(Diagnosi.diag_id==diag_f).first()
     if log is not None:
         pait = Paitent.query.filter(Paitent.pat_id == log.pat_id).first()
-        session['loginUser'] = { 'userid':log.diag_id, 'name': pait.pat_name ,'pat_id': pait.pat_id}
+        session['loginUser'] = { 'userid':log.diag_id, 'name': pait.pat_name ,'pat_id': pait.pat_id,'pho':pait.pat_phonum}
         if session.get('next'): 
             next = session.get('next')
             del session['next']
@@ -75,26 +75,52 @@ def doctor():
 
 @app.route('/doctor', methods=['POST'])
 def doctor_post():
-    doc = Doctor.query.filter(Doctor.doc_id==DiagDoc.doc_id).all()
+    # doc = Doctor.query.filter(Doctor.doc_id==DiagDoc.doc_id).all()
     evalu_list = EvaluteItem.query.filter(EvaluteItem.target == "의사").order_by(EvaluteItem.type).all()
     userinfo = session.get('loginUser')
     pid=userinfo['pat_id']  
     did = userinfo['userid']
-    for doc_list in doc:
-        for item in evalu_list:
-            item_value=request.form.get(str(item.evalu_id))
-            du = DocEvalu(pat_id = pid, diag_id = did, doc_id = doc_list.doc_id, evalu_id = item.evalu_id, evalu_ans=item_value)
-            db_session.add(du)
-        db_session.commit()
+    f_doc_id = request.form.get('doc_list')
+    
+    for item in evalu_list:
+        item_value=request.form.get(str(item.evalu_id))
+        du = DocEvalu(pat_id = pid, diag_id = did, doc_id = f_doc_id, evalu_id = item.evalu_id, evalu_ans=item_value)
+        db_session.add(du)
+    db_session.commit()
     
     return render_template('home.html')   
 
 
 
-@app.route('/reservation')
+@app.route('/reservation', methods = ['GET'])
 def reservation():
-    return render_template('reser.html',title='reser.html')
+    userin= session.get('loginUser')
+    # pid=userin['pat_id']
+    # name=userin['name']
+    major = Doctor.query.all()
+    return render_template('reser.html',majorr=major)
+
+@app.route('/reservation', methods = ['POST'])
+def reservation_post():
+    userin= session.get('loginUser')
+    pid=userin['pat_id']
+    user = userin['userid']
+    rdate= request.form.get('reser_date')
+    rtime = request.form.get('reser_time')
+    print = str(rdate +" "+ rtime + ":"+"00")
+    r_doc_id = request.form.get('list')
+    ru = Reservation(pat_id=pid, diag_id=user, doc_id= r_doc_id, resv_date=print)
+    db_session.add(ru)
+    db_session.commit()
+    return render_template('home.html')  
 
 @app.route('/history')
 def history():    
-    return render_template('histo.html',title='histo.html')
+    userinfo = session.get('loginUser')
+    pid=userinfo['pat_id']  
+    query= db_session.query(DiagDoc)
+    diag_list = query.join(Diagnosi, DiagDoc.pat_id == Diagnosi.pat_id )    
+    for item in diag_list :           
+       print(f'환자id {item.pat_id}, 의사id {item.doc_id}, diag_id{item.diag_id}' )
+       doc = Doctor.query.filter(Doctor.doc_id == item.doc_id).one()
+    return render_template('histo.html')

@@ -1,109 +1,70 @@
 {%extends 'base.html' %}
 {% block main %}
-<!doctype html>
-<html lang="ko">
-<head>
-<title>main</title>
-<meta charset="euc-kr">
-<style>
-#container {
-	width: 940px;
-	margin: 0px auto;
-	padding: 20px;
-	border: 1px solid #bcbcbc;
-}
+<script>
+	function getSelectValue(frm)
+	{
+	 frm.docname.value = frm.list.options[frm.list.selectedIndex].value;
+	}
+</script>
+<link href="{{ url_for('static', filename='css/reser.css') }}" rel="stylesheet">
+<center>
+    <form action="/reservation" method="POST" name = "reser">
+        <table width="800">
+            <tr height="40">
+                <td align="center"><b>[재진신청]</b></td>
+            </tr>
+        </table>    
+        <table width="800" height="800" cellpadding="0" style="border-collapse:collapse; font-size:13pt;">
+            <tr class="register" height="30">
+                <td width="5%" align="center">*</td>
+                <td width="15%" >환자이름</td>
+                <td><input type="text" name="wUserID" value="{{session.loginUser.name}}"></td>
+            </tr>
+            <tr height="7">
+                <td colspan="3"><hr /></td>
+            </tr>
+            <tr class="register" height="30">
+                <td width="5%" align="center">*</td>
+                <td width="15%">환자고유번호</td>
+                <td><input type="text" name="wUserPWConfirm" id="pwCheck" value="{{session.loginUser.pat_id}}"></td>
+            </tr>
+            <tr height="7">
+                <td colspan="3"><hr /></td>
+            </tr>
+            <tr class="register" height="30">
+                <td width="5%" align="center">*</td>
+                <td width="15%">진료과목</td>
+                <td> 
+					<select name="list" id = "list" onchange="getSelectValue(this.form);">
+						<option value="none">==== 선택 ====</option>
+						{% for doc in majorr %}    
+							<option , name = "{{doc.doc_id}}" value = "{{doc.doc_id}}" >{{doc.doc_major}}: {{doc.doc_name}}</option>
+						{%endfor%}
+				   </select>
+				</td>
+            </tr>
+            <tr height="7">	
+                <td colspan="3"><hr /></td>
+            </tr>
+            <tr class="register" height="30">
+                <td width="5%" align="center">*</td>
+                <td width="15%">일자,시간 선택</td>
+                <td>
+					<input type = "date" name="reser_date">
+					<input type = "time" name="reser_time" min="09:00" max="20:00"/><br>
+                </td>
+            </tr>
+            <tr height="7">
+                <td colspan="3"><hr /></td>
+            </tr>
+ 
+        </table>
+        <br />
+        <table>
+			<input type= "submit" value = "[신청]" class="myButton">
 
-#header {
-	padding: 20px;
-	margin-bottom: 5px;
-	width: 900px;
-	height: 10px;
-	border: 1px solid #bcbcbc;
-	float: right;
-	text-align: right;
-}
-
-#headermenu {
-	padding: 20px;
-	margin-bottom: 5px;
-	width: 900px;
-	height: 50px;
-	float: left;
-	border: 1px solid #bcbcbc;
-}
-
-#content {
-	width: 900px;
-	padding: 20px;
-	margin-bottom: 20px;
-	float: right;
-	border: 1px solid #bcbcbc;
-}
-
-#footer {
-	clear: both;
-	padding: 20px;
-	border: 1px solid #bcbcbc;
-}
-</style>
-</head>
-<body>
-	<div id="container">
-		<!-- header 시작  -->
-		<div id="header">
-			
-		</div>
-		<div id="headermenu">
-			<a href="main.jsp">홈</a> | <a href="#"> 개설강좌 </a>
-		</div>
-
-		<!-- header 끝  -->
-		<!--  content 시작  -->
-		<div id="content">
-			<table border="1" id="sub_list">
-				<tr class="tr">
-					
-					
-					
-					<th>개설학과</th>
-					<th>교강사</th>
-					<th>신청</th>
-					</tr>
-						
-						<tr>
-							<td>2</td>
-							<td>컴퓨터공학과</td>
-							<td>강민</td>
-							<td><input type ="button" value="신청" class="list_btn_3"/></td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>컴퓨터공학과</td>
-							<td>남궁 성</td>
-							<td ><input type ="button" value="신청" class="list_btn_4"/></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>컴퓨터공학과</td>
-							<td>서재원</td>
-							<td><input type ="button" value="신청" class="list_btn_5" /></td>
-				
-						
-			
-				</table>
-		</div>
-		<!--  content 끝  -->
-
-		<!--  footer 시작   -->
-		<div id="footer">
-			<p>footer 부분</p>
-		</div>
-		<!--  footer 끝  -->
-
-	</div>
-
-</body>
-</html>
-
+        </table>
+    </form>
+</center>
 
 {% endblock %}
