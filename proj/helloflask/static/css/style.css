@@ -6,12 +6,7 @@ body {
   text-align: center;
 }
 
-tr > :first-child {
-  color: red;
-}
-tr > :last-child {
-  color: blue;
-}
+
 
 .card-comments img {
   width: 4rem; }

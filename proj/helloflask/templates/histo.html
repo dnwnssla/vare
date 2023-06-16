@@ -1,7 +1,41 @@
 {%extends 'base.html' %}
 {% block main %}
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">*알려드립니다*</h4>
+    <p>• 본 정보는 병.의원에서 청구한 진료비/약제비 정보를 바탕으로 제공 되므로 바로 조회되지 않을 수 있습니다.</p>
+    <p>• 개인정보보호를 위해 본화면 에서는 화면 복사, 캡처, 인쇄 등이 기능이 작동하지 않을 있습니다.</p>
+    <p>• 병원에 문의하면 자세한 진료,처방내역을 확인할 수 있습니다.</p>
+    <hr>
+    <p class="mb-0">궁금한 사항 있으시면 연락주세요 <백조병원 : 1577-1577></p>
+  </div>
 
-<table class="table table-striped">
-</table>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">리스트</th>
+        <th scope="col">진료과</th>
+        <th scope="col">의사이름</th>
+        <th scope="col">진료날</th>
+        <th scope="col">진료</th>
+      </tr>
+    
+    </thead>
+    <tbody>
+      {%if hos %}
+      {% for i in hos %} 
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i.Doctor.doc_major}}</td>
+        <td>{{i.Doctor.doc_name}}</td>
+        <td>{{i.Diagnosi.diag_date}}</td>
+        <td>{{i.Diagnosi.type}}</td>
+        
+      </tr>
+      {% endfor %}
+      {% endif %}
+    
+      
+    </tbody>
+  </table>
 
 {% endblock %}

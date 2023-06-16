@@ -116,11 +116,37 @@ def reservation_post():
 
 @app.route('/history')
 def history():    
+    dlist = {}   
     userinfo = session.get('loginUser')
-    pid=userinfo['pat_id']  
-    query= db_session.query(DiagDoc)
-    diag_list = query.join(Diagnosi, DiagDoc.pat_id == Diagnosi.pat_id )    
-    for item in diag_list :           
-       print(f'환자id {item.pat_id}, 의사id {item.doc_id}, diag_id{item.diag_id}' )
-       doc = Doctor.query.filter(Doctor.doc_id == item.doc_id).one()
-    return render_template('histo.html')
+    pid=userinfo['pat_id'] 
+    hos_list= db_session.query(Diagnosi,DiagDoc,Doctor).filter(Diagnosi.pat_id == pid, DiagDoc.diag_id == DiagDoc.diag_id, Doctor.doc_id == DiagDoc.doc_id).order_by(Diagnosi.diag_date.desc())
+    
+    #.add_columns(Diagnosi.diag_date, Diagnosi.diag_type, Doctor.doc_name,Doctor.doc_major)
+    # hos_list = query.join(Doctor, DiagDoc.doc_id == Doctor.doc_id).add_entity(Doctor)
+    # ddate = Diagnosi.query.filter(Diagnosi.diag_date != None)
+    # if ddate:
+    #     for d in ddate:
+    #         print(d.diag_date)
+    
+    # for hl in hos_list:
+        
+      
+    #     print (hl.Doctor.doc_name )    
+    #     print (str(hl.Diagnosi.diag_date))
+    # dlist = db_session.query(DiagDoc, Diagnosi, Doctor).join(DiagDoc).filter(DiagDoc.pat_id ==pid).order_by(Diagnosi).order_by(Doctor).all()
+    # for d in dlist:
+    #     print(type(d))
+    #     print(d)     
+    
+    # diag_list = DiagDoc.query.join(Diagnosi).filter(DiagDoc.pat_id == pid).order_by(DiagDoc.diag_id)
+    # doc_list = DiagDoc.query.join(Doctor).filter(DiagDoc.doc_id == Doctor.doc_id).order_by(DiagDoc.diag_id)
+  
+  
+  
+    # diag_list = DiagDoc.query.filter(DiagDoc.pat_id == pid).order_by(DiagDoc.diag_id)
+    # for diagitem in diag_list :     
+    #     doc_list = Diagnosi.query.filter(Diagnosi.pat_id == diagitem.pat_id).all()
+    #     print(doc_list.diag_type) 
+    
+    # return render_template('histo.html',doc_list = doc_list, diag_list= diag_list)
+    return render_template('histo.html', hos = hos_list)
