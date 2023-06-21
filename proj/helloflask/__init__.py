@@ -123,3 +123,13 @@ def history():
     hos_list= db_session.query(Diagnosi,DiagDoc,Doctor).filter(Diagnosi.pat_id == pid, Diagnosi.diag_id == DiagDoc.diag_id, Doctor.doc_id == DiagDoc.doc_id).order_by(Diagnosi.diag_date.desc())
     
     return render_template('histo.html', hos = hos_list)
+
+@app.route('/location')
+def location():       
+    return render_template('location.html')
+
+@app.route('/parking')
+def parking():       
+    return render_template('parking.html')
+
+
