@@ -3,10 +3,10 @@ apiVersion: v1
 metadata:
   name: svc-vare
 spec:
-  ports:
-  - name: vsc-port
-    port: 5000
-    protocol: TCP
-    targetPort: 5000
-  selector:
-    app: vare-app
+ports:
+- name: vsc-port
+  port: 5000
+  protocol: TCP
+  targetPort: 5000
+selector:
+  app: vare-app
