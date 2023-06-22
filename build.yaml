@@ -2,7 +2,7 @@ kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
   name: bc-vare-app
-  namespace: ww-test
+  namespace: vare-ns
 spec:
   output:
     to:
