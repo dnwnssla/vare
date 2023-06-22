@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: vare-app
-        deployment: dp-vare-app
+        deployment: vare-app
     spec:
       containers:
         - name: vare-app
