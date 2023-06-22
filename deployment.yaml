@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   annotations:
     image.openshift.io/triggers: >-
-      [{"from":{"kind":"ImageStreamTag","name":"is-vare-app:latest","namespace":"vare-ns"},"fieldPath":"spec.template.spec.containers[?(@.name==\"vare-app\")].image","pause":"false"}]
+      [{"from":{"kind":"ImageStreamTag","name":"vare-app:latest","namespace":"vare-ns"},"fieldPath":"spec.template.spec.containers[?(@.name==\"vare-app\")].image","pause":"false"}]
   name: dp-vare-app
   namespace: vare-ns
 spec:
@@ -20,7 +20,7 @@ spec:
       containers:
         - name: vare-app
           image: >-
-            image-registry.openshift-image-registry.svc:5000/vare-ns/is-vare-app
+            image-registry.openshift-image-registry.svc:5000/vare-ns/vare-app
           ports:
             - containerPort: 5000
               protocol: TCP
