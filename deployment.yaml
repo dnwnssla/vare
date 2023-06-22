@@ -5,7 +5,7 @@ metadata:
     image.openshift.io/triggers: >-
       [{"from":{"kind":"ImageStreamTag","name":"vare-app:latest","namespace":"ww-test"},"fieldPath":"spec.template.spec.containers[?(@.name==\"vare-app\")].image","pause":"false"}]
   name: dp-vare-app
-  namespace: ww-test
+  namespace: vare-ns
 spec:
   replicas: 1
   selector:
