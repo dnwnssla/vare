@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: vare-app
+  name: svc-vare-app
   namespace: ww-test
 spec:
   ports:
