@@ -1,0 +1,34 @@
+{%extends 'base.html' %}
+{% block main %}
+<script>
+    function finish() {    
+    alert("진료의사에 대한 설문을 완료하셨습니다.");
+    }
+</script>
+    
+<link href="{{ url_for('static', filename='css/doce.css') }}" rel="stylesheet">
+<form action = "/doctor" method = "POST">
+    <select name="doc_list" id = "list">
+     <option value="none">==== 선택 ====</option>
+     {% for doc in doclist %}    
+         <option  value = "{{doc.doc_id}}"  >{{doc.doc_major}}: <{{doc.doc_name}}></option>
+     {%endfor%}
+    </select>
+    
+    
+{% for item in evallist%}   
+    <div class ="form-control" >{{loop.index}}. {{item.q_name}}</div>   
+       
+        {% if item.type == "점수" %}
+            {% for m in mlist %}
+            <input type= "radio" name = "{{item.evalu_id}}" value= "{{6 - loop.index }}">{{m}} 
+            {%endfor%}
+        {% else %}
+            <input type= "textarea" name = "{{item.evalu_id}}" class="form-control" >
+            
+        {%endif%}
+ {% endfor%}
+ <button type="submit" value="submit" onclick = "finish()" class = "myButton"> > 제출 < </button>
+</form>
+
+{% endblock %}

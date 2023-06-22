@@ -1,0 +1,46 @@
+<head>
+    <script src="{{ url_for('static', filename='js/Nright.js') }}" crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='css/Nright.css') }}" rel="stylesheet">
+</head>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="/home">
+            <img src="{{ url_for('static', filename='img/logow.png')}}" style="float: left; width: 110px; height: 90px;">
+        </a>
+
+        <!-- Collapse -->
+
+        <!-- Links -->
+
+           
+            <!-- Right -->
+            <ul>
+                
+                    <!--사이드 메뉴 영역-->
+                    <div class="sidebar">
+                        <a class="closebtn" onclick="closeMenu()">×</a>
+                        {% if session.loginUser %}
+                        <h7>{{session.loginUser.name}}님</h7>
+                        {% endif %}
+                        <a href="/hospital">병원설문조사</a>
+                        <a href="/doctor">의사설문조사</a>
+                        <a href="/reservation">재신신청</a>
+                        <a href="/history">진료내역조회</a>
+                        <a href="/logout">로그아웃</a>
+                                                
+                    </div>
+                    
+                    <!--화면영역-->
+                    <div id="main">
+                        <button class="openbtn" onclick="openMenu()">
+                         ☰
+                        </button>   
+                    </div>
+            </ul>
+
+        
+
+    </div>
+</nav>

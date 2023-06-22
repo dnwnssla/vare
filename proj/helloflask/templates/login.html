@@ -1,0 +1,36 @@
+<!doctype HTML>
+<head>
+	<meta charset="UTF-8">
+	<title>Bakjo AfterCare Service</title>
+	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+    <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+</head>
+<form action="/" method="POST" class="text-center border border-light p-5">
+
+<body>
+	<div class="main-container">
+		<div class="main-wrap">
+		<header>
+			<div class="logo-wrap">
+				<img src="{{ url_for('static', filename='img/h.png')}}" style="width: 400px; height: 300px" >
+			</div>
+		</header>
+		<section class="login-input-section-wrap">
+			<div class="login-input-wrap">	
+				<input placeholder="번호를 입력해주세요" type="text" name="id" required></input>
+			</div>
+			<div class="login-button-wrap">
+				<button type="submit">고유번호 입력 후 클릭</button >
+			</div>
+		</section>
+
+		<footer>
+			<div class="copyright-wrap">
+			<span>- Bakjo hospital A.C.S -</span>
+			</div>
+		</footer>
+		</div>
+	</div>
+</body>
+</form>
+

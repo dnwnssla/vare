@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block main %}
+<link href="{{ url_for('static', filename='css/hoste.css') }}" rel="stylesheet">
+<script>
+    function finish() {    
+    alert("병원에 대한 설문을 완료하셨습니다.");    
+    }    
+ </script>
+<form action = "/hospital" method = "POST">
+
+{% for item in evallist%}
+   
+    <div class ="form-control" >{{loop.index}}. {{item.q_name}}</div>
+    
+       
+        {% if item.type == "점수" %}
+            {% for m in mlist %}
+            <input type= "radio" name = "{{item.evalu_id}}" value= "{{6 - loop.index }}">{{m}} 
+            {%endfor%}
+        {% else %}
+            <input type= "textarea" name = "{{item.evalu_id}}" class="form-control" >
+            
+        {%endif%}
+    
+    
+
+{% endfor%}
+<button type="submit" value="submit" onclick = "finish()" class = "myButton"> > 제출 < </button>
+
+</form>
+{% endblock %}

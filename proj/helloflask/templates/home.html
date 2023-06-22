@@ -1,0 +1,109 @@
+{%extends 'base.html' %}
+{% block main %}
+<link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
+<div class="mainBox">
+    <!-- inner -->
+    <div class="inner">
+        <!-- row -->
+        <div class="row">
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon01">병원이용안내</h2>
+                <p class="text">
+                    전문상담사가 빠른 예약을 도와드립니다.<br>
+                    상담시간 : 평일 09:00-17:00<small>(토요일, 공휴일 제외)</small>
+                    전화번호: 1577-1577
+                </p>
+            </div>
+            <!-- //box -->
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon02">병원 설문 조사</h2>
+                <p class="text">
+                    병원의 전체적인<br>
+                    평가,설문하실 수 있습니다
+                </p>
+                <!-- btnWrap -->
+                <div class="btnWrap">
+                    <div class="row">
+                        <button type="button" class="button button-color01 block" id="rsvConfirm" onclick="location.href='/hospital'">설문조사</button>
+                    </div>
+                </div>
+                <!-- //btnWrap -->
+            </div>
+            <!-- //box -->
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon02">의사 설문 조사</h2>
+                <p class="text">
+                    담당의사의 전체적인<br>
+                    평가,설문하실 수 있습니다
+                </p>
+                <!-- btnWrap -->
+                <div class="btnWrap">
+                    <div class="row">
+                        <button type="button" class="button button-color01 block" id="rsvConfirm" onclick="location.href='/doctor'">설문조사</button>
+                    </div>
+                </div>
+                <!-- //btnWrap -->
+            </div>
+            <!-- //box -->
+        <!-- //row -->
+        <!-- row -->
+        <div class="row">
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon02">재진신청</h2>
+                <p class="text">
+                    진료받으신 진료과에<br>
+                    재진신청하실 수 있습니다
+                    
+                </p>
+                <!-- btnWrap -->
+                <div class="btnWrap">
+                    <div class="row">
+                        <button type="button" class="button button-color01 block" id="rsvConfirm" onclick="location.href='/reservation'">재진신청</button>
+                    </div>
+                </div>
+                <!-- //btnWrap -->
+            </div>
+            <!-- //box -->
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon02">진료내역조회</h2>
+                <p class="text">
+                    과거진료내역을<br>
+                    조회하실 수 있습니다
+                    
+                </p>
+                <!-- btnWrap -->
+                <div class="btnWrap">
+                    <div class="row">
+                        <button type="button" class="button button-color01 block" id="rsvConfirm" onclick="location.href='/history'">내역조회</button>
+                    </div>
+                </div>
+                <!-- //btnWrap -->
+            </div>
+            <!-- //box -->
+            <!-- box -->
+            <div class="box">
+                <h2 class="title icon05">오시는 길</h2>
+                <p class="text">
+                    백조병원으로<br>
+                    오시는 길을 알려드립니다.
+                </p>
+                <!-- btnWrap -->
+                <div class="btnWrap justify">
+                    <a onclick="location.href='/location'" class="button" role="button">위치안내</a>
+                    <a onclick="location.href='/parking'" class="button" role="button">주차안내</a>
+                </div>
+                <!-- //btnWrap -->
+            </div>
+        </div>
+        <!-- //row -->
+    </div>
+    <!-- //inner -->
+</div>
+
+
+{% endblock %}

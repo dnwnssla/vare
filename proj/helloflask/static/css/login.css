@@ -1,0 +1,161 @@
+:root{
+	--body-background-color: #FFFFFF;
+	--font-color: #4e4e4e;
+	--border-gray-color : #dadada;
+	--naver-green-color: #3086c9;
+	--naver-green-border-color: #3086c9;
+}
+/*전체적인 배경색*/
+
+*{
+	margin:0;
+	padding:0;
+}
+/*넌 뭐니*/
+
+body{
+	background:var(--body-background-color);
+}
+
+
+.main-container{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 21px;
+	
+}
+/*전체적인 위치 가운데로 설정*/
+
+.main-container .main-wrap{
+	width:768px;
+
+}
+.main-container .main-wrap .selel-lang-wrap .lang-select
+{
+	width: 96px;
+	height: 30px;
+	color: var(--font-color);
+	border: solid 1px var(--border-gray-color);
+}
+.main-container .main-wrap .logo-wrap{
+	padding-top:55px;
+	background-color:#FFFFFF
+	
+}
+
+.main-container .main-wrap header .logo-wrap{
+	display:flex;	
+	flex-direction: column;
+	align-items: center;
+	
+}
+.login-input-section-wrap{
+	padding-top: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login-input-wrap{
+	width: 465px;
+	height :48px;
+	border: solid 1px var(	--border-gray-color );
+	background: white;
+}
+.password-wrap{
+	margin-top: 13px;
+}
+.login-input-wrap input{
+	border: none;
+	width:430px;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-left: 10px;
+	height:30px;
+}
+.login-button-wrap {
+	padding-top: 13px;
+}
+
+
+.login-button-wrap button{
+	width: 465px;
+	height :48px;
+	font-size: 18px;
+	background: var(--naver-green-color);
+	color: white;
+	border: solid 1px var(--naver-green-border-color);
+}
+
+
+
+footer{
+   
+	padding-top: 95px;
+	padding-bottom: 15px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width:768px;
+}
+
+body {
+
+	font-size: 62.5%;
+  }
+  
+  .container {
+	padding: 2em;
+  }
+  
+  /* GENERAL BUTTON STYLING */
+  button,
+  button::after {
+	-webkit-transition: all 0.3s;
+	  -moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	  transition: all 0.3s;
+  }
+  
+  button {
+	background: none;
+	border: 3px solid #fff;
+	border-radius: 5px;
+	color: #fff;
+	display: block;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 1em auto;
+	
+	position: relative;
+	text-transform: uppercase;
+  }
+  
+  button::before,
+  button::after {
+	background: #fff;
+	content: '';
+	position: absolute;
+	z-index: -1;
+  }
+  
+  button:hover {
+	color: #000000;
+  }
+  
+  /* BUTTON 1 */
+  .btn-1::after {
+	height: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+  }
+  
+  .btn-1:hover:after {
+	height: 100%;
+  }
+  
+
+

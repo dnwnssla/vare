@@ -1,0 +1,55 @@
+h7{
+    font-size: 40px;
+    padding: 8px 8px 20px 32px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    transition: 0.3s;/*펼침속도*/
+    padding-top: 60px;
+    }
+
+    .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: hsl(0, 0%, 0%);
+    display: block;
+    transition: 0.3s;
+    font-weight: bold;
+    }
+
+    /*메뉴열기 hover 시*/
+    .sidebar a:hover {
+    color: #4d4ae8;
+    }
+
+
+    .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    }
+
+    .openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #444;
+    padding: 0px;
+    border: none;
+    }
+
+    #main {
+    transition: margin-left 0.4s;
+    padding: 10px;
+    }

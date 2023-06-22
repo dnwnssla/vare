@@ -1,0 +1,89 @@
+  /* Styling the Body element i.e. Color,
+        Font, Alignment */
+       
+ 
+        /* Styling the Form (Color, Padding, Shadow) */
+        form {
+            background-color: #fff;
+            margin: 40px auto;
+            padding: 10px 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        /* Styling form-control Class */
+      .form-control {
+            text-align: left;
+            margin-bottom: 15px;
+            margin-top: 30px;
+
+        }
+
+        .form-controlll {
+            text-align: left;
+            margin-bottom: 5px;
+            margin-top: 20px;
+
+        }
+    
+ 
+        /* Styling form-control Label */
+        .form-control label {
+            display: block;
+            margin-bottom: 15px;
+        }
+ 
+        /* Styling form-control input,
+        select, textarea */
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            padding: 10px;
+            display: block;
+            width: 95%;
+        }
+ 
+        /* Styling form-control Radio
+        button and Checkbox */
+        .form-control input[type="radio"],
+        .form-control input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+            
+        }
+ 
+        /* Styling Button */
+
+        textarea{
+            width: 100%;
+            height: 6.25em;
+            border: none;
+            resize: none;
+        }
+
+        .myButton {
+            box-shadow: 3px 4px 0px 0px #1564ad;
+            background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+            background-color:#79bbff;
+            border-radius:5px;
+            border:1px solid #337bc4;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:17px;
+            font-weight:bold;
+            padding:12px 44px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #528ecc;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+            background-color:#378de5;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
