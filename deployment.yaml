@@ -1,0 +1,42 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"vare-app:latest","namespace":"ww-test"},"fieldPath":"spec.template.spec.containers[?(@.name==\"vare-app\")].image","pause":"false"}]
+  name: vare-app
+  namespace: ww-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vare-app
+  template:
+    metadata:
+      labels:
+        app: vare-app
+        deployment: vare-app
+    spec:
+      containers:
+        - name: vare-app
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/ww-test/vare-app
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
