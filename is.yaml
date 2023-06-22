@@ -1,7 +1,7 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-  name: is-vare-app
+  name: vare-app
   namespace: vare-ns
 spec:
   lookupPolicy:
