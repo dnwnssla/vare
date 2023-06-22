@@ -1,0 +1,38 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: vare-app
+  namespace: ww-test
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'vare-app:latest'
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'python:3.9-ubi8'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/dnwnssla/vare.git'
+    contextDir: proj
+  triggers:
+    - type: Generic
+      generic:
+        secretReference:
+          name: vare-app-generic-webhook-secret
+    - type: GitHub
+      github:
+        secretReference:
+          name: vare-app-github-webhook-secret
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  runPolicy: Serial
