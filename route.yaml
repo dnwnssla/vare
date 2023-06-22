@@ -7,7 +7,7 @@ spec:
   host: vare-app-ww-test.apps.vare-aws.reca0.com
   to:
     kind: Service
-    name: vare-app
+    name: svc-vare-app
     weight: 100
   port:
     targetPort: 5000-tcp
