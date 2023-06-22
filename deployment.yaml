@@ -22,7 +22,7 @@ spec:
           image: >-
             image-registry.openshift-image-registry.svc:5000/ww-test/vare-app
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
               protocol: TCP
           resources: {}
           terminationMessagePath: /dev/termination-log
