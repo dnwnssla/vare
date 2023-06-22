@@ -7,7 +7,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: 'vare-app:latest'
+      name: 'is-vare-app:latest'
   successfulBuildsHistoryLimit: 5
   failedBuildsHistoryLimit: 5
   strategy:
