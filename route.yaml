@@ -1,7 +1,7 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: vare-app
+  name: rt-vare-app
   namespace: ww-test
 spec:
   host: vare-app-ww-test.apps.vare-aws.reca0.com
