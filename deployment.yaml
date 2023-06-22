@@ -20,7 +20,7 @@ spec:
       containers:
         - name: vare-app
           image: >-
-            image-registry.openshift-image-registry.svc:5000/vare-ns/vare-app
+            image-registry.openshift-image-registry.svc:5000/vare-ns/is-vare-app
           ports:
             - containerPort: 5000
               protocol: TCP
