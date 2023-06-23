@@ -24,7 +24,13 @@ spec:
           ports:
             - containerPort: 5000
               protocol: TCP
-          resources: {}
+          resources:
+            limits:
+              cpu: "1" 
+              memory: "1Gi" 
+            requests: 
+              cpu: "1"
+              memory: "1Gi"
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
